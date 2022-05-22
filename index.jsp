@@ -1,4 +1,4 @@
-<%@ include file="jsp/header.jsp" %>
+<%@ include file="header.jsp" %>
 <section class="content home">
   <div class="welcome-content">
     <h1>Welcome to Hecipe!</h1>
