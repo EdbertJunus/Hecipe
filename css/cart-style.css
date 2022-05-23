@@ -22,8 +22,8 @@
   padding: 2px 0 2px 2px;
 }
 
-.quantity-input > input[type="number"]::-webkit-inner-spin-button,
-.quantity-input > input[type="number"]::-webkit-outer-spin-button {
+.quantity-input input[type="number"]::-webkit-inner-spin-button,
+.quantity-input input[type="number"]::-webkit-outer-spin-button {
   opacity: 1;
 }
 
@@ -33,4 +33,23 @@
   font-size: 12px;
   margin-top: 2px;
   padding: 6px 10px;
+}
+
+@media screen and (max-width: 500px) {
+  .cart .transaction-table {
+    table-layout: fixed;
+  }
+  .cart .transaction-table tr:first-child th {
+    font-size: 12px;
+    padding: 2px;
+  }
+
+  .cart .table-item td:last-child .btn-prime {
+    width: 100%;
+    padding: 5px;
+  }
+
+  .quantity-input > .btn-warning {
+    padding: 5px;
+  }
 }
