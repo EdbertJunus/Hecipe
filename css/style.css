@@ -90,9 +90,6 @@ footer {
 
 .content {
   flex: 1 1 auto;
-}
-
-.home {
   height: 100%;
   padding: 0 120px;
 }
