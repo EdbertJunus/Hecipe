@@ -1,0 +1,36 @@
+.cart {
+  padding-bottom: 30px;
+}
+
+.cart .transaction-table {
+  table-layout: auto;
+  width: 100%;
+}
+
+.cart .quantity-input {
+  width: 50px;
+  margin: 0 auto;
+}
+
+.quantity-input input[type="number"],
+.quantity-input > input[type="submit"] {
+  width: 50px;
+  border: 0.5px solid #e9e9ed;
+}
+
+.quantity-input input[type="number"] {
+  padding: 2px 0 2px 2px;
+}
+
+.quantity-input > input[type="number"]::-webkit-inner-spin-button,
+.quantity-input > input[type="number"]::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  box-shadow: none;
+  font-size: 12px;
+  margin-top: 2px;
+  padding: 6px 10px;
+}
