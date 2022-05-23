@@ -7,6 +7,7 @@
     <title>Hecipe</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/transaction-style.css" />
+    <link rel="stylesheet" href="css/cart-style.css" />
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/register.css">
     <link
