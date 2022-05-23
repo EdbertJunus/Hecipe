@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/transaction-style.css" />
     <link rel="stylesheet" href="css/cart-style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
   <body>
     <header>
@@ -19,6 +23,11 @@
           <li class="nav-item"><a href="#home">Home</a></li>
           <li class="nav-item"><a href="#foods">Foods</a></li>
         </ul>
+        <div class="hamburger">
+          <span class="icon" id="hamburger-icon">
+            <i class="fa fa-bars"></i>
+          </span>
+        </div>
       </nav>
       <div class="nav-auth">
         <!--Dynamic Change-->
