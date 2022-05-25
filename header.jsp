@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/transaction-style.css" />
     <link rel="stylesheet" href="css/cart-style.css" />
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="css/register.css" />
+    <link rel="stylesheet" href="css/profile.css" />
+    <link rel="stylesheet" href="css/changepwd.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"

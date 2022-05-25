@@ -31,6 +31,7 @@
 
     background-color: rgb(213, 31, 31);
     border: none;
+    border-radius: 3px;
     color:white;
     font-size: 14px;
 }

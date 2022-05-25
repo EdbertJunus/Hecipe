@@ -45,4 +45,6 @@
     else if(rmb_me != null){
         // Add Cookie to store username that will last for 24 hours
     }
+
+    // Add to db lalu redirect ke homepage
 %>
