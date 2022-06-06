@@ -63,5 +63,5 @@
         response.sendRedirect("register.jsp?err=Confirm password does not match password!");
     }
 
-    // Register ke db
+    // Register ke db lalu redirect ke login page
 %>

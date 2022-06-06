@@ -7,7 +7,7 @@
         <hr />
       </span>
     
-    <!-- Login -->
+    <!-- Register -->
     <form action="register-validation.jsp" method="post" name="RegisterForm">
         <div class="register-container">
 
