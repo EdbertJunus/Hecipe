@@ -1,7 +1,9 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
-<%@page import="java.sql.*"%>
+<%@ page import="java.sql.*"%>
+<%@ include file="databases/connect.jsp"%>
+<%@ include file="handleCookiesLogin.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -43,17 +45,16 @@
         <!--Dynamic Change-->
         <%
             //Connect con = Connect.getConnection();
-            //String query = "SELECT * FROM users";
+            //String query = "SELECT * FROM msuser";
             //ResultSet rs = con.executeQuery(query);
 
             //while(rs.next()){
-
-            //if(rs.getString("UserRole").equals("Member")){
-            //    session.setAttribute("userRole", rs.getString("UserRole"));
-            //    session.setAttribute("userName", rs.getString("UserName"));
-            //  }
+            //  session.setAttribute("userRole", rs.getString("UserRole"));
+            //  session.setAttribute("userName", rs.getString("UserName"));
+              
             //}
             
+            //Ini untuk Dummy
             //session.setAttribute("userRole", "Member");
             //session.setAttribute("userName", "Edbert");
 
