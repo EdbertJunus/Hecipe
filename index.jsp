@@ -57,7 +57,13 @@
       </span>
       <span class="site-status-item">
         <p class="description-text">Current Date:</p>
-        <p class="description-text">*2021-12-13*</p>
+        <p class="description-text">
+          <%
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+            Date today = new Date();
+            out.println(formatter.format(today));
+          %>
+        </p>
       </span>
       <span class="site-status-item">
         <p class="description-text">Number of user:</p>
