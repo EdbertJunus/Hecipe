@@ -1,3 +1,5 @@
+<%@ page import="java.util.*" %>
+<%@ include file="databases/connect.jsp" %>
 <%
 
     // Get Values
@@ -5,6 +7,10 @@
     String email = request.getParameter("email");
     String pwd = request.getParameter("password");
     String pwd_confirm = request.getParameter("confirm-password");
+
+    Connect con = Connect.getConnection();
+    String query = String.format("SELECT * FROM msuser WHERE UserEmail = ('%s')", email);
+    ResultSet rs = con.executeQuery(query);
 
     String ALPHABET_REGEX = "^[a-zA-Z]+$";
     String NUMBER_REGEX = "^[0-9]+$";
@@ -46,8 +52,10 @@
     }
     else if(isSymbolCorrect == false){
         response.sendRedirect("register.jsp?err=Email cannot have '@' and '.' side by side");
+    }else if(rs.next()){
+        // Check if email is in database (Must be unique)
+        response.sendRedirect("register.jsp?err=Email is already registered!");
     }
-    // Check if email is in database (Must be unique)
 
     // Validate Password
     else if(pwd == ""){
@@ -61,7 +69,11 @@
     }
     else if(!pwd_confirm.equals(pwd)){
         response.sendRedirect("register.jsp?err=Confirm password does not match password!");
+    }else{
+        // Register ke db lalu redirect ke login page
+        String query_insert = String.format("INSERT INTO msuser (UserName, UserEmail, UserPassword, UserRole) VALUES ('%s', '%s', '%s', '%s')", name, email, pwd, "Member");
+        con.executeUpdate(query_insert);
+        response.sendRedirect("login.jsp");
     }
 
-    // Register ke db lalu redirect ke login page
 %>

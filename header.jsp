@@ -44,7 +44,7 @@
       <div class="nav-auth">
         <!--Dynamic Change-->
         <%
-            //Connect con = Connect.getConnection();
+            Connect con = Connect.getConnection();
             //String query = "SELECT * FROM msuser";
             //ResultSet rs = con.executeQuery(query);
 
