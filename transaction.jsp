@@ -1,4 +1,9 @@
 <%@ include file="header.jsp" %>
+<%
+  if(userRole == null){
+    response.sendRedirect("index.jsp");
+  }
+%>
 <section class="content transaction">
   <span class="feature-title">
     <h2>Transactions</h2>
@@ -9,6 +14,13 @@
       <tr>
         <th>Date</th>
         <th>Processed</th>
+        <%-- <%
+          if(userRole != null && userRole.equals("Admin")){
+        %>
+          <th>Member</th>
+        <%
+          }
+        %> --%>
         <th>Action</th>
       </tr>
       <tr class="table-item">

@@ -57,11 +57,34 @@
       </span>
       <span class="site-status-item">
         <p class="description-text">Current Date:</p>
-        <p class="description-text">*2021-12-13*</p>
+        <p class="description-text">
+          <%
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+            Date today = new Date();
+            out.println(formatter.format(today));
+          %>
+        </p>
       </span>
       <span class="site-status-item">
         <p class="description-text">Number of user:</p>
-        <p class="description-text">*3 person*</p>
+        <p class="description-text">
+          <%
+            String query = "SELECT COUNT(*) FROM msuser";
+            ResultSet rs = con.executeQuery(query);
+            
+            while(rs.next()){
+              Integer countRow = rs.getInt(1);
+              if(countRow > 1){
+                out.println(countRow + " persons");
+
+              }else{
+                out.println(countRow + " person");
+
+              }
+            }
+
+          %>
+        </p>
       </span>
       <span class="site-status-item">
         <p class="description-text">Logged user:</p>

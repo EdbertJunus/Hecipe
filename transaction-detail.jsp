@@ -1,4 +1,10 @@
 <%@ include file="header.jsp" %>
+<%-- Untuk handle role agar gak tembak via route--%>
+<%
+  if(userRole == null){
+    response.sendRedirect("index.jsp");
+  }
+%>
 <section class="content transaction transaction-detail">
   <span class="feature-title">
     <h2>Detail Transactions</h2>
@@ -43,8 +49,17 @@
       <!--Diganti dengan jsp include-->
     </table>
     <div class="total-price">
-      <p><b>Total:</b>*3200*</p>
-      <button type="button" class="btn-prime btn-success">Process</button>
+      <span>
+        <b>Total:</b>
+        <p id="total-price-text">*3200*</p>
+      </span>
+      <%
+          if(userRole != null && userRole.equals("Admin")){
+      %>
+        <button type="button" class="btn-prime btn-success">Process</button>
+      <%
+        }
+      %>
     </div>
   </div>
 </section>

@@ -1,3 +1,9 @@
+<%@ page import="java.util.*" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.sql.*"%>
+<%@ include file="databases/connect.jsp"%>
+<%@ include file="handleCookiesLogin.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,7 +32,7 @@
           <img src="assets/Logo.png" alt="logo"/>
         </a>
         <ul>
-          <li class="nav-item"><a href="#home">Home</a></li>
+          <li class="nav-item"><a href="index.jsp">Home</a></li>
           <li class="nav-item"><a href="#foods">Foods</a></li>
         </ul>
         <div class="hamburger">
@@ -37,18 +43,52 @@
       </nav>
       <div class="nav-auth">
         <!--Dynamic Change-->
+        <%
+            Connect con = Connect.getConnection();
+            //String query = "SELECT * FROM msuser";
+            //ResultSet rs = con.executeQuery(query);
+
+            //while(rs.next()){
+            //  session.setAttribute("userRole", rs.getString("UserRole"));
+            //  session.setAttribute("userName", rs.getString("UserName"));
+              
+            //}
+            
+            //Ini untuk Dummy
+            //session.setAttribute("userRole", "Member");
+            //session.setAttribute("userName", "Edbert");
+
+            String userRole = (String)session.getAttribute("userRole");
+            String userName = (String)session.getAttribute("userName");
+
+            
+        %>
         <ul>
         <%-- 1. Guest Auth --%>
-          <%-- <li class="nav-item"><a href="#login">Login</a></li>
-          <li class="nav-item"><a href="#register">Register</a></li> --%>
+          <%
+            if(userRole == null){
+          %>
+            <li class="nav-item"><a href="login.jsp">Login</a></li>
+            <li class="nav-item"><a href="register.jsp">Register</a></li>
+          <%
+            }else{
+          %>
         
         <%-- 2. Admin Auth --%>
-          <li class="nav-item-welcome">Welcome, *Admin/Nesnah*</li>
-          <li class="nav-item"><a href="#profile">Profile</a></li>
-          <li class="nav-item"><a href="#cart">View Cart</a></li>
-          <li class="nav-item"><a href="#transaction">View Transaction</a></li>
-          <li class="nav-item"><a href="#logout">Logout</a></li>
-
+            <li class="nav-item-welcome">Welcome, <%= userName%></li>
+            <li class="nav-item"><a href="#profile">Profile</a></li>
+              <%
+                if(userRole.equals("Member")){
+              %>
+                <li class="nav-item"><a href="cart.jsp">View Cart</a></li>
+              <%
+                }
+              %>
+            <li class="nav-item"><a href="transaction.jsp">View Transaction</a></li>
+            <li class="nav-item"><a href="handleLogout.jsp">Logout</a></li>
+          <%
+            }
+          %>
         </ul>
       </div>
     </header>

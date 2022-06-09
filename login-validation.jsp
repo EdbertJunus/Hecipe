@@ -1,9 +1,15 @@
+<%@ page import="java.util.*" %>
+<%@ include file="databases/connect.jsp" %>
 <%
 
     // Get Values
     String email = request.getParameter("email");
     String pwd = request.getParameter("password");
     String [] rmb_me = request.getParameterValues("remember-me");
+
+    Connect con = Connect.getConnection();
+    String query;
+    ResultSet rs;
 
     // Validate Email
     // Validate @ and .
@@ -40,11 +46,39 @@
     else if (pwd == ""){
         response.sendRedirect("login.jsp?err=Password Cannot be Empty!");
     }
-    // Check if password in database
+    else{
+        // Check if password in database
+        query = String.format("SELECT * FROM msuser WHERE UserEmail='%s'", email);
+        rs = con.executeQuery(query);
 
-    else if(rmb_me != null){
-        // Add Cookie to store username that will last for 24 hours
+        if(!rs.next()){
+            response.sendRedirect("login.jsp?err=Email is not registered");
+        }else if(!pwd.equals(rs.getString("UserPassword"))){
+            response.sendRedirect("login.jsp?err=Password input is wrong");
+
+        }else{
+            String userName = rs.getString("UserName");
+            if(rmb_me != null){
+                // Add Cookie to store username that will last for 24 hours
+                
+                Cookie user_cookie = new Cookie("hecipe_userName", userName);
+                user_cookie.setMaxAge(24 * 60 * 60);
+                response.addCookie(user_cookie);
+                
+            }
+
+            session.setAttribute("userRole", rs.getString("UserRole"));
+            session.setAttribute("userName", userName);
+
+            // Add to db lalu redirect ke homepage
+            //Harusnya ini add userStatus Log In atau gak ke db
+            
+            response.sendRedirect("index.jsp");
+        }
+        
+        
+
+
     }
-
-    // Add to db lalu redirect ke homepage
+    
 %>

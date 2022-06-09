@@ -19,14 +19,19 @@
           <img src="assets/Nasi-Goreng.jpg" alt="fried-rice" />
         </td>
         <td><a href="#LinkeMenu">Fried Rice</a></td>
+        <input type="hidden" name="foodId" value="foodId" />
         <td>
           <div class="quantity-input">
             <input type="number" value="2" />
-            <input class="btn-prime btn-warning" type="submit" value="Save" />
+            <input
+              class="btn-prime btn-warning save-btn"
+              type="submit"
+              value="Save"
+            />
           </div>
         </td>
         <td>1000</td>
-        <td>2000</td>
+        <td class="item-subtotal">2000</td>
         <td><button class="btn-prime">Delete</button></td>
       </tr>
       <tr class="table-item">
@@ -37,11 +42,15 @@
         <td>
           <div class="quantity-input">
             <input type="number" value="2" />
-            <input class="btn-prime btn-warning" type="submit" value="Save" />
+            <input
+              class="btn-prime btn-warning save-btn"
+              type="submit"
+              value="Save"
+            />
           </div>
         </td>
         <td>1000</td>
-        <td>2000</td>
+        <td class="item-subtotal">2000</td>
         <td><button class="btn-prime">Delete</button></td>
       </tr>
       <tr class="table-item">
@@ -52,17 +61,24 @@
         <td>
           <div class="quantity-input">
             <input type="number" value="1" />
-            <input class="btn-prime btn-warning" type="submit" value="Save" />
+            <input
+              class="btn-prime btn-warning save-btn"
+              type="submit"
+              value="Save"
+            />
           </div>
         </td>
         <td>1000</td>
-        <td>2000</td>
+        <td class="item-subtotal">2000</td>
         <td><button class="btn-prime">Delete</button></td>
       </tr>
       <!--Diganti dengan jsp include-->
     </table>
     <div class="total-price">
-      <p><b>Total:</b>*3200*</p>
+      <span>
+        <b>Total:</b>
+        <p id="total-price-text">*3200*</p>
+      </span>
       <div class="btn-wrapper">
         <button type="button" class="btn-prime">Empty cart</button>
         <button type="button" class="btn-prime btn-success">Check out</button>

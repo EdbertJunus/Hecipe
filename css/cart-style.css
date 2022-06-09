@@ -35,6 +35,15 @@
   padding: 6px 10px;
 }
 
+.total-price > span {
+  display: flex;
+  flex-direction: row;
+}
+
+#total-price-text {
+  margin-left: 6px;
+}
+
 @media screen and (max-width: 500px) {
   .cart .transaction-table {
     table-layout: fixed;
