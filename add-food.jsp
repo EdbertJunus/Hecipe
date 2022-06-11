@@ -8,7 +8,7 @@
       </span>
     
     <!-- Add Food -->
-    <form action="addfood-validation.jsp" method="post" name="addFoodForm">
+    <form action="controller/addfood-validation.jsp" method="post" name="addFoodForm">
         <div class="add-food-container">
 
             <!-- Food Name -->

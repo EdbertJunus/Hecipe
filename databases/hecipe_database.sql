@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2022 at 09:03 PM
+-- Generation Time: Jun 11, 2022 at 09:11 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -55,6 +55,7 @@ CREATE TABLE `mscomment` (
 
 CREATE TABLE `msfood` (
   `FoodId` int(11) NOT NULL,
+  `FoodName` varchar(255) NOT NULL,
   `FoodCategory` varchar(255) NOT NULL,
   `FoodDescription` varchar(255) NOT NULL,
   `FoodImage` varchar(255) NOT NULL,
