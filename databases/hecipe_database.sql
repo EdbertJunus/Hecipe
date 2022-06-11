@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2022 at 11:47 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+-- Generation Time: Jun 11, 2022 at 08:30 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,6 +33,18 @@ CREATE TABLE `mscart` (
   `UserId` int(11) NOT NULL,
   `CartQuantity` int(11) NOT NULL,
   `CartTotal` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mscomment`
+--
+
+CREATE TABLE `mscomment` (
+  `Food_Id` int(11) NOT NULL,
+  `User_Id` int(11) NOT NULL,
+  `UserComment` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -73,7 +85,8 @@ CREATE TABLE `msuser` (
   `UserName` varchar(255) NOT NULL,
   `UserEmail` varchar(255) NOT NULL,
   `UserPassword` varchar(255) NOT NULL,
-  `UserRole` varchar(255) NOT NULL
+  `UserRole` varchar(255) NOT NULL,
+  `UserStatus` varchar(255) NOT NULL DEFAULT 'not_loggedin'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -87,6 +100,13 @@ ALTER TABLE `mscart`
   ADD KEY `FoodId` (`FoodId`),
   ADD KEY `TransactionId` (`TransactionId`),
   ADD KEY `UserId` (`UserId`);
+
+--
+-- Indexes for table `mscomment`
+--
+ALTER TABLE `mscomment`
+  ADD KEY `User_Id` (`User_Id`),
+  ADD KEY `Food_Id` (`Food_Id`);
 
 --
 -- Indexes for table `msfood`
@@ -139,6 +159,13 @@ ALTER TABLE `mscart`
   ADD CONSTRAINT `FoodId` FOREIGN KEY (`FoodId`) REFERENCES `msfood` (`FoodId`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `TransactionId` FOREIGN KEY (`TransactionId`) REFERENCES `mstransaction` (`TransactionId`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `UserId` FOREIGN KEY (`UserId`) REFERENCES `msuser` (`UserId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `mscomment`
+--
+ALTER TABLE `mscomment`
+  ADD CONSTRAINT `Food_Id` FOREIGN KEY (`Food_Id`) REFERENCES `msfood` (`FoodId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `User_Id` FOREIGN KEY (`User_Id`) REFERENCES `msuser` (`UserId`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
