@@ -8,7 +8,7 @@
       </span>
     
     <!-- Login -->
-    <form action="login-validation.jsp" method="post" name="LoginForm">
+    <form action="controller/login-validation.jsp" method="post" name="LoginForm">
         <div class="login-container">
 
             <!-- Email -->

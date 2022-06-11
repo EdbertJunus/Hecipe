@@ -8,7 +8,7 @@
       </span>
     
     <!-- Register -->
-    <form action="register-validation.jsp" method="post" name="RegisterForm">
+    <form action="controller/register-validation.jsp" method="post" name="RegisterForm">
         <div class="register-container">
 
             <!-- Name -->

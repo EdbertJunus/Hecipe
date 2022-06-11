@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2022 at 08:30 PM
+-- Generation Time: Jun 11, 2022 at 09:03 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -71,7 +71,7 @@ CREATE TABLE `msfood` (
 CREATE TABLE `mstransaction` (
   `TransactionId` int(11) NOT NULL,
   `TransactionDate` date NOT NULL,
-  `TransactionStatus` varchar(255) NOT NULL
+  `TransactionStatus` varchar(255) NOT NULL DEFAULT 'False'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -88,6 +88,14 @@ CREATE TABLE `msuser` (
   `UserRole` varchar(255) NOT NULL,
   `UserStatus` varchar(255) NOT NULL DEFAULT 'not_loggedin'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `msuser`
+--
+
+INSERT INTO `msuser` (`UserId`, `UserName`, `UserEmail`, `UserPassword`, `UserRole`, `UserStatus`) VALUES
+(1, 'Nael', 'naelj15@gmail.com', 'asdasd123', 'Admin', 'not_loggedin'),
+(2, 'edbert', 'edbert@gmail.com', 'qweqwe123', 'Member', 'not_loggedin');
 
 --
 -- Indexes for dumped tables
@@ -146,7 +154,7 @@ ALTER TABLE `mstransaction`
 -- AUTO_INCREMENT for table `msuser`
 --
 ALTER TABLE `msuser`
-  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

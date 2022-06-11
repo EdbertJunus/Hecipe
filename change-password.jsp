@@ -8,7 +8,7 @@
       </span>
     
     <!-- Change Password -->
-    <form action="changepwd-validation.jsp" method="post" name="ChangepwdForm">
+    <form action="controller/changepwd-validation.jsp" method="post" name="ChangepwdForm">
         <div class="changepwd-container">
 
             <!-- Old Password -->

@@ -1,5 +1,6 @@
 <%@ page import="java.util.*" %>
-<%@ include file="databases/connect.jsp" %>
+<%@page import="java.sql.*"%>
+<%@ include file="../databases/connect.jsp" %>
 <%
 
     // Get Values
@@ -8,8 +9,8 @@
     String [] rmb_me = request.getParameterValues("remember-me");
 
     Connect con = Connect.getConnection();
-    String query;
-    ResultSet rs;
+    String query = String.format("SELECT * FROM msuser WHERE UserEmail = ('%s')", email);
+    ResultSet rs = con.executeQuery(query);
 
     // Validate Email
     // Validate @ and .
@@ -29,32 +30,30 @@
     }
 
     if (email == ""){
-        response.sendRedirect("login.jsp?err=Email Cannot be Empty!");
+        response.sendRedirect("../login.jsp?err=Email Cannot be Empty!");
     }
     else if(countAt == 0 || isEmailContainDot == false){
-        response.sendRedirect("login.jsp?err=Email must contain both '@' and '.'");
+        response.sendRedirect("../login.jsp?err=Email must contain both '@' and '.'");
     }
     else if(countAt > 1){
-        response.sendRedirect("login.jsp?err=Email can only contain one '@'");
+        response.sendRedirect("../login.jsp?err=Email can only contain one '@'");
     }
     else if(isSymbolCorrect == false){
-        response.sendRedirect("login.jsp?err=Email cannot have '@' and '.' side by side");
+        response.sendRedirect("../login.jsp?err=Email cannot have '@' and '.' side by side");
     }
-    // Check if email is in database
+    else if(rs.next() == false){
+        // Check if email is in database
+        response.sendRedirect("../login.jsp?err=Email is not registered!");
+    }
 
     // Validate Password
     else if (pwd == ""){
-        response.sendRedirect("login.jsp?err=Password Cannot be Empty!");
+        response.sendRedirect("../login.jsp?err=Password Cannot be Empty!");
     }
     else{
         // Check if password in database
-        query = String.format("SELECT * FROM msuser WHERE UserEmail='%s'", email);
-        rs = con.executeQuery(query);
-
-        if(!rs.next()){
-            response.sendRedirect("login.jsp?err=Email is not registered");
-        }else if(!pwd.equals(rs.getString("UserPassword"))){
-            response.sendRedirect("login.jsp?err=Password input is wrong");
+        if(!rs.getString("UserPassword").equals(pwd)){
+            response.sendRedirect("../login.jsp?err=Password input is wrong");
 
         }else{
             String userName = rs.getString("UserName");
@@ -69,15 +68,11 @@
 
             session.setAttribute("userRole", rs.getString("UserRole"));
             session.setAttribute("userName", userName);
-
-            // Add to db lalu redirect ke homepage
-            //Harusnya ini add userStatus Log In atau gak ke db
-            
-            response.sendRedirect("index.jsp");
+            session.setAttribute("userEmail", rs.getString("UserEmail"));
+            String query_update = String.format("UPDATE msuser SET UserStatus = ('%s') WHERE UserEmail = ('%s')", "logged_in", email);
+            con.executeUpdate(query_update);
+            response.sendRedirect("../index.jsp");
         }
-        
-        
-
 
     }
     

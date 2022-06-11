@@ -76,7 +76,7 @@
         
         <%-- 2. Admin Auth --%>
             <li class="nav-item-welcome">Welcome, <%= userName%></li>
-            <li class="nav-item"><a href="#profile">Profile</a></li>
+            <li class="nav-item"><a href="profile.jsp">Profile</a></li>
               <%
                 if(userRole.equals("Member")){
               %>
