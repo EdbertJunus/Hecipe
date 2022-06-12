@@ -34,7 +34,7 @@
         </a>
         <ul>
           <li class="nav-item"><a href="index.jsp">Home</a></li>
-          <li class="nav-item"><a href="#foods">Foods</a></li>
+          <li class="nav-item"><a href="foodPage.jsp">Foods</a></li>
         </ul>
         <div class="hamburger">
           <span class="icon" id="hamburger-icon">

@@ -87,6 +87,11 @@
 .fp-content-item {
     text-align: center;
     border-bottom: 0.5px solid #7e838b;
+    display: none;
+}
+
+.fp-content-item.active {
+    display: table-row;
 }
 
 .fp-content-item a {
@@ -98,4 +103,124 @@
     object-fit: contain;
     width: 100%;
     height: 300px;
+}
+
+/* Pagination */
+.fp-page-nav {
+    margin-top: 20px;
+    position: fixed;
+    bottom: 75px;
+}
+
+.fp-page-nav ul {
+    display: flex;
+}
+
+.fp-page-nav ul li{
+    list-style-type: none;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.first, .prev, .next, .last{
+    height: 40px;
+    width: 60px;
+    border: 1px solid black;
+    text-align: center;
+    padding: 10px;
+}
+
+.first:hover, .prev:hover, .next:hover, .last:hover{
+    background-color: red;
+    color: white;
+}
+
+.first {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.last {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.fp-page-nav ul li.page-number {
+    height: 40px;
+    width: 40px;
+    border: 1px solid black;
+    text-align: center;
+    padding: 10px;
+}
+
+.fp-page-nav ul li.page-number:hover {
+    background-color: red;
+    color: white;
+}
+
+.fp-page-nav ul li.page-dots {
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    padding: 10px;
+    cursor: default;
+}
+
+.fp-page-nav ul li.active {
+    background-color: red;
+    color: white;
+    pointer-events: none;
+}
+
+.fp-page-nav ul li.disabled {
+    background-color: #d6d6d6;
+    color: #3d3d3d;
+    pointer-events: none;
+}
+
+.edit {
+    background-color: #f59e0b;
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    width: 60px;
+    cursor: pointer;
+}
+
+.edit a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.delete {
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    width: 70px;
+    cursor: pointer;
+}
+
+.delete a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.atc {
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.atc a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
 }

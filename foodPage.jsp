@@ -1,9 +1,5 @@
 <%@ include file="header.jsp" %>
-<%
-  if(userRole == null){
-    response.sendRedirect("index.jsp");
-  }
-%>
+
 <section class="content food-page">
     <!-- Food Detail Title -->
     <span class="feature-title">
@@ -13,9 +9,14 @@
 
     <!-- Guest -->
     <!-- Search Bar -->
+    <%
+        String searchResult = "";
+        String query = "";
+        searchResult = request.getParameter("searchFood");
+    %>
     <div class="fp-search">
         <div class="fp-search-left">
-            <form action="controller/searchFood.jsp">
+            <form action="foodPage.jsp">
                 <!-- Search -->
                 <input type="text" name="searchFood" id="" placeholder="Search food by">
     
@@ -30,43 +31,97 @@
             </form>
         </div>
         <div class="fp-search-right">
-            <button><a href="add-food.jsp">Add new food</a></button>
+            <%
+                if(userRole != null && userRole.equals("Admin")){
+                    %>
+                    <button><a href="add-food.jsp">Add new food</a></button>
+                    <%
+                }
+            %>
         </div>
     </div>
     <div class="fp-content">
         <table class="fp-content-table">
-            <tr>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Price</th>
-                <!-- If guest hide action -->
-                <th>Action</th>
-            </tr>
-            <tr class="fp-content-item">
-                <td class="image-item">
-                    <img src="assets/Nasi-Goreng.jpg" alt="fried-rice" />
-                </td>
-                <td><a href="#LinkeMenu">Fried Rice</a></td>
-                <td>2</td>
-                <td>1000</td>
-                <td>2000</td>
-            </tr>
-            <tr class="fp-content-item">
-                <td class="image-item">
-                    <img src="assets/nasi-kuning.jpg" alt="kuning-rice" />
-                </td>
-                <td><a href="#LinkeMenu">Yellow Rice</a></td>
-                <td>2</td>
-                <td>1000</td>
-                <td>2000</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <!-- If guest hide action -->
+                    <%
+                        if(userRole != null && (userRole.equals("Admin") || userRole.equals("Member"))){
+                            %>
+                            <th>Action</th>
+                            <%
+                        }
+                    %>
+                </tr>
+            </thead>
+            <tbody>
+                <%
+                    String category = request.getParameter("search-category");
+                    if(searchResult == null || searchResult.equals("")){
+                        query = String.format("SELECT * FROM msfood");
+                    }
+                    else if(category.equals("name")){
+                        query = "SELECT * FROM msfood WHERE FoodName LIKE '%" + searchResult + "%'";
+                    }
+                    else if(category.equals("category")){
+                        query = "SELECT * FROM msfood WHERE FoodCategory LIKE '%" + searchResult + "%'";
+                    }
+                    else if(category.equals("description")){
+                        query = "SELECT * FROM msfood WHERE FoodDescription LIKE '%" + searchResult + "%'";
+                    }
+                    int foodCount = 0;
+                    ResultSet rs = con.executeQuery(query);
+                    while(rs.next()){
+                        foodCount += 1;
+                %>
+                <tr class="fp-content-item">
+                    <td class="image-item">
+                        <img src="<%= rs.getString("FoodImage")%>" alt="<%= rs.getString("FoodName")%>" />
+                    </td>
+                    <td><a href="#LinkeMenu"><%= rs.getString("FoodName")%></a></td>
+                    <td><%= rs.getString("FoodCategory")%></td>
+                    <td><%= rs.getString("FoodPrice")%></td>
+                    <%
+                        if(userRole != null){
+                            if(userRole.equals("Admin")){
+                                %>
+                                    <td>
+                                        <div class="fp-content-action">
+                                            <button class="edit"><a href="edit-food.jsp?FoodId=<%= rs.getInt("FoodId")%>">Edit</a></button>
+                                            <button class="delete"><a href="controller/deleteFood-Controller.jsp?FoodId=<%=rs.getInt("FoodId")%>">Delete</a></button>
+                                        </div>
+                                    </td>
+                                <%
+                            } else if(userRole.equals("Member")){
+                                %>
+                                    <td>
+                                        <div class="fp-content-action">
+                                            <button class="atc"><a href="#">Add to Cart</a></button>
+                                        </div>
+                                    </td>
+                                <%
+                            }
+                        }
+                    %>
+                </tr>
+                <%
+                    }
+                %>
+            </tbody>
         </table>
     </div>
     <div class="fp-page-nav">
-        
+        <ul id="pageNavigation">
+            <!-- Pagination -->
+        </ul>
     </div>
-
+    
+    <input type="hidden" name="totalFood" value="<%= foodCount%>">
+    <script src="js/pagination.js"></script>
 </section>
 
 <%@ include file="html/footer.html" %>

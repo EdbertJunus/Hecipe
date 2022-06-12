@@ -10,6 +10,8 @@
     String food_price = request.getParameter("food-price");
     String food_quantity = request.getParameter("food-quantity");
 
+    String food_id = request.getParameter("FoodId");
+
     Connect con = Connect.getConnection();
 
     // Count Space
@@ -60,8 +62,8 @@
     }
     else{
         // Insert to food database
-        String query_insert = String.format("INSERT INTO msfood (FoodName, FoodCategory, FoodDescription, FoodImage, FoodPrice, FoodQuantity) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')", food_name, food_category, food_description, "assets/Nasi-Goreng.jpg", food_price, food_quantity);
-        con.executeUpdate(query_insert);
+        String query_update = String.format("UPDATE msfood SET FoodName = ('%s'), FoodCategory = ('%s'), FoodDescription = ('%s'), FoodPrice = ('%s'), FoodQuantity = ('%s') WHERE FoodId = ('%s')", food_name, food_category, food_description, food_price, food_quantity, food_id);
+        con.executeUpdate(query_update);
         response.sendRedirect("../foodPage.jsp");
     }
 
