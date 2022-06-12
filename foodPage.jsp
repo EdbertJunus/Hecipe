@@ -1,5 +1,9 @@
 <%@ include file="header.jsp" %>
-
+<%
+  if(userRole == null){
+    response.sendRedirect("index.jsp");
+  }
+%>
 <section class="content food-page">
     <!-- Food Detail Title -->
     <span class="feature-title">
