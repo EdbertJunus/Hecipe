@@ -7,12 +7,15 @@
 <section class="content add-food">
     <!-- Add Food Title -->
     <span class="feature-title">
-        <h2>Add Food</h2>
+        <h2>Edit Food</h2>
         <hr />
       </span>
     
     <!-- Add Food -->
-    <form action="controller/addfood-validation.jsp" method="post" name="addFoodForm">
+    <%
+        String foodId = request.getParameter("FoodId");
+    %>
+    <form action="controller/editfood-validation.jsp?FoodId=<%= foodId%>" method="post" name="addFoodForm">
         <div class="add-food-container">
 
             <!-- Food Name -->
@@ -51,7 +54,7 @@
 
             <!-- Button Register -->
             <div class="add-food-content">
-                <button type="submit">Add Food</button>
+                <button type="submit">Edit Food</button>
             </div>
         </div>
     </form>

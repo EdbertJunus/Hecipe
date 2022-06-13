@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2022 at 09:03 PM
+-- Generation Time: Jun 12, 2022 at 07:30 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -55,12 +55,27 @@ CREATE TABLE `mscomment` (
 
 CREATE TABLE `msfood` (
   `FoodId` int(11) NOT NULL,
+  `FoodName` varchar(255) NOT NULL,
   `FoodCategory` varchar(255) NOT NULL,
   `FoodDescription` varchar(255) NOT NULL,
   `FoodImage` varchar(255) NOT NULL,
   `FoodPrice` int(11) NOT NULL,
   `FoodQuantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `msfood`
+--
+
+INSERT INTO `msfood` (`FoodId`, `FoodName`, `FoodCategory`, `FoodDescription`, `FoodImage`, `FoodPrice`, `FoodQuantity`) VALUES
+(4, 'Nasi Babi', 'Meats', 'Ini adalah nasi dikasih babi', 'assets/Nasi-Goreng.jpg', 30000, 20),
+(5, 'Nasi merah', 'Meats', 'Ini adalah nasi berwarna merah', 'assets/Nasi-Goreng.jpg', 15000, 40),
+(6, 'Nasi Rendang', 'Meats', 'Ini adalah nasi pakai rendang', 'assets/Nasi-Goreng.jpg', 30000, 10),
+(7, 'Mie Goreng', 'Meats', 'Ini adalah mie goreng indonesia', 'assets/Nasi-Goreng.jpg', 10000, 10),
+(8, 'Mie Kuah', 'Meats', 'Ini adalah mie pakai kuah', 'assets/Nasi-Goreng.jpg', 10000, 15),
+(9, 'Mie Apa Pula', 'Meats', 'Ini mie apa pula lah', 'assets/Nasi-Goreng.jpg', 15000, 15),
+(10, 'Nasi Goreng Kambing', 'Vegetarian', 'Ini adalah nasi goreng pakai kambing', 'assets/Nasi-Goreng.jpg', 100000, 10),
+(11, 'Nasi Goreng', 'Meats', 'Nasi goreng biasa doang ni mah', 'assets/Nasi-Goreng.jpg', 15000, 100);
 
 -- --------------------------------------------------------
 
@@ -94,7 +109,7 @@ CREATE TABLE `msuser` (
 --
 
 INSERT INTO `msuser` (`UserId`, `UserName`, `UserEmail`, `UserPassword`, `UserRole`, `UserStatus`) VALUES
-(1, 'Nael', 'naelj15@gmail.com', 'asdasd123', 'Admin', 'not_loggedin'),
+(1, 'Nael', 'naelj15@gmail.com', 'asdasd123', 'Admin', 'logged_in'),
 (2, 'edbert', 'edbert@gmail.com', 'qweqwe123', 'Member', 'not_loggedin');
 
 --
@@ -142,7 +157,7 @@ ALTER TABLE `msuser`
 -- AUTO_INCREMENT for table `msfood`
 --
 ALTER TABLE `msfood`
-  MODIFY `FoodId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `FoodId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `mstransaction`

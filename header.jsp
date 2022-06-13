@@ -18,8 +18,9 @@
     <link rel="stylesheet" href="css/register.css" />
     <link rel="stylesheet" href="css/profile.css" />
     <link rel="stylesheet" href="css/changepwd.css" />
-    <link rel="stylesheet" href="css/add-food.css">
-    <link rel="stylesheet" href="css/food-detail.css">
+    <link rel="stylesheet" href="css/add-food.css" />
+    <link rel="stylesheet" href="css/food-detail.css" />
+    <link rel="stylesheet" href="css/food-page.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -33,7 +34,7 @@
         </a>
         <ul>
           <li class="nav-item"><a href="index.jsp">Home</a></li>
-          <li class="nav-item"><a href="#foods">Foods</a></li>
+          <li class="nav-item"><a href="foodPage.jsp">Foods</a></li>
         </ul>
         <div class="hamburger">
           <span class="icon" id="hamburger-icon">
