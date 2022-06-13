@@ -23,16 +23,25 @@
         %> --%>
         <th>Action</th>
       </tr>
-      <tr class="table-item">
-        <td>2021-12-13</td>
-        <td>true</td>
-        <td><a href="#">See detail</a></td>
-      </tr>
-      <tr class="table-item">
-        <td>2021-12-13</td>
-        <td>false</td>
-        <td><a href="#">See detail</a></td>
-      </tr>
+      <%
+        String query = "";
+
+        if(userRole.equals("Admin")){
+          query = "SELECT * FROM mstransaction";
+        }else if(userRole.equals("Member")){
+          query = String.format("SELECT * FROM mstransaction T JOIN mscart C ON T.TransactionId = C.TransactionId WHERE UserId = %d GROUP BY C.TransactionId;", userId);
+        }
+        ResultSet rs = con.executeQuery(query);
+        while(rs.next()){
+          %>
+            <tr class="table-item">
+              <td><%= rs.getString("TransactionDate")%></td>
+              <td><%= rs.getString("TransactionStatus")%></td>
+              <td><a href="transaction-detail.jsp?transactionId=<%= rs.getString("TransactionId")%>">See detail</a></td>
+            </tr>
+          <%
+        }
+      %>
       <!--Diganti dengan jsp include-->
     </table>
   </div>

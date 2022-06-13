@@ -19,44 +19,59 @@
         <th>Price</th>
         <th>Subtotal</th>
       </tr>
-      <tr class="table-item">
-        <td class="image-item">
-          <img src="assets/Nasi-Goreng.jpg" alt="fried-rice" />
-        </td>
-        <td><a href="#LinkeMenu">Fried Rice</a></td>
-        <td>2</td>
-        <td>1000</td>
-        <td>2000</td>
-      </tr>
-      <tr class="table-item">
-        <td class="image-item">
-          <img src="assets/nasi-kuning.jpg" alt="kuning-rice" />
-        </td>
-        <td><a href="#LinkeMenu">Yellow Rice</a></td>
-        <td>2</td>
-        <td>1000</td>
-        <td>2000</td>
-      </tr>
-      <tr class="table-item">
-        <td class="image-item">
-          <img src="assets/nasi-kuning.jpg" alt="kuning-rice" />
-        </td>
-        <td><a href="#LinkeMenu">Yellow Rice</a></td>
-        <td>2</td>
-        <td>1000</td>
-        <td>2000</td>
-      </tr>
+      <%
+        String transactionId = request.getParameter("transactionId");
+        String query = String.format("SELECT * FROM mscart WHERE TransactionId=%d", Integer.parseInt(transactionId));
+        ResultSet rs = con.executeQuery(query);
+        ArrayList<String> queryList = new ArrayList<String>();
+        ArrayList<Integer> cartQuantityList = new ArrayList<Integer>();
+        ArrayList<Integer> cartTotalList = new ArrayList<Integer>();
+        int total = 0;
+
+        while(rs.next()){
+          queryList.add(String.format("SELECT * from msfood WHERE FoodId=%d", rs.getInt("FoodId")));
+          cartQuantityList.add(rs.getInt("CartQuantity"));
+          cartTotalList.add(rs.getInt("CartTotal"));
+        }
+
+        for(int i=0; i<queryList.size(); i++){
+            rs = con.executeQuery(queryList.get(i));
+            while(rs.next()){
+              total += cartTotalList.get(i);  
+          %>
+            <tr class="table-item">
+              <td class="image-item">
+                <img src="assets/<%= rs.getString("FoodImage")%>" alt="*food-name*" />
+              </td>
+              <td><a href="#LinkeMenu"><%= rs.getString("FoodDescription")%></a></td>
+              <td><%= cartQuantityList.get(i)%></td>
+              <td><%= rs.getString("FoodPrice")%></td>
+              <td><%= cartTotalList.get(i)%></td>
+            </tr>
+          <%
+          }
+        }
+      %>
+      
+      
       <!--Diganti dengan jsp include-->
     </table>
     <div class="total-price">
       <span>
         <b>Total:</b>
-        <p id="total-price-text">*3200*</p>
+        <p id="total-price-text"><%= total%></p>
       </span>
       <%
-          if(userRole != null && userRole.equals("Admin")){
+        query = String.format("SELECT * FROM mstransaction WHERE TransactionId = %d", Integer.parseInt(transactionId));
+        rs = con.executeQuery(query);
+        String transactionStatus = "";
+        while(rs.next()){
+          transactionStatus = rs.getString("TransactionStatus");
+        }
+
+        if(userRole != null && userRole.equals("Admin") && transactionStatus.equals("False")){
       %>
-        <button type="button" class="btn-prime btn-success">Process</button>
+        <button type="button" class="btn-prime btn-success"><a href="controller/handleTransactionProcess.jsp?transactionId=<%= transactionId%>">Process</a></button>
       <%
         }
       %>
