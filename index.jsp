@@ -88,7 +88,27 @@
       </span>
       <span class="site-status-item">
         <p class="description-text">Logged user:</p>
-        <p class="description-text">*0 person*</p>
+        <p class="description-text">
+        <%
+          query = "SELECT * FROM msuser";
+          rs = con.executeQuery(query);
+          int countLogged = 0;
+          while(rs.next()){
+              if(rs.getString("UserStatus").equals("logged_in")){
+                countLogged++;
+              }
+          }
+          if(countLogged > 1){
+            out.println(countLogged + " persons");
+
+          }else{
+            out.println(countLogged + " person");
+
+          }
+        %>
+        
+        
+        </p>
       </span>
     </div>
   </div>

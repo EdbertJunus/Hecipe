@@ -3,7 +3,7 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="java.sql.*"%>
 <%@ include file="databases/connect.jsp"%>
-<%@ include file="handleCookiesLogin.jsp"%>
+<%@ include file="controller/handleCookiesLogin.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -60,7 +60,7 @@
 
             String userRole = (String)session.getAttribute("userRole");
             String userName = (String)session.getAttribute("userName");
-
+            Integer userId = (Integer)session.getAttribute("userId");
             
         %>
         <ul>
@@ -85,7 +85,7 @@
                 }
               %>
             <li class="nav-item"><a href="transaction.jsp">View Transaction</a></li>
-            <li class="nav-item"><a href="handleLogout.jsp">Logout</a></li>
+            <li class="nav-item"><a href="controller/handleLogout.jsp">Logout</a></li>
           <%
             }
           %>

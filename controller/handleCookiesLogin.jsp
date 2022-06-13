@@ -1,4 +1,5 @@
 <%@ page import="java.util.*" %>
+
 <%
     Cookie[] cookies = request.getCookies();
     String LoggedUserName=null;
@@ -21,6 +22,10 @@
         if(rs.next()){
             session.setAttribute("userRole", rs.getString("UserRole"));
             session.setAttribute("userName", rs.getString("UserName"));
+            session.setAttribute("userEmail", rs.getString("UserEmail"));
+            session.setAttribute("userId", rs.getInt("UserId"));
+            String query_update = String.format("UPDATE msuser SET UserStatus = ('%s') WHERE UserEmail = ('%s')", "logged_in", rs.getString("UserEmail"));
+            con.executeUpdate(query_update);
         }
     }
         

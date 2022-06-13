@@ -59,9 +59,9 @@
             String userName = rs.getString("UserName");
             if(rmb_me != null){
                 // Add Cookie to store username that will last for 24 hours
-                
                 Cookie user_cookie = new Cookie("hecipe_userName", userName);
                 user_cookie.setMaxAge(24 * 60 * 60);
+                user_cookie.setPath("/");
                 response.addCookie(user_cookie);
                 
             }
@@ -69,6 +69,7 @@
             session.setAttribute("userRole", rs.getString("UserRole"));
             session.setAttribute("userName", userName);
             session.setAttribute("userEmail", rs.getString("UserEmail"));
+            session.setAttribute("userId", rs.getInt("UserId"));
             String query_update = String.format("UPDATE msuser SET UserStatus = ('%s') WHERE UserEmail = ('%s')", "logged_in", email);
             con.executeUpdate(query_update);
             response.sendRedirect("../index.jsp");
