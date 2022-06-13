@@ -1,4 +1,4 @@
-.add-food {
+.edit-comment {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,23 +8,33 @@
     overflow-y: auto;
 }
 
-.add-food-container {
+.edit-comment-container {
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 3px;
-    height: 400px;
+    height: 375px;
     margin-top: 15px;
     padding: 20px 15px;
 }
 
-.add-food-content {
+.edit-comment-content {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: left;
 
     margin-bottom: 15px;
 }
 
-.add-food-content button {
+#old-comment {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.edit-comment-content button {
     height: 35px;
     width: 100%;
     margin-top: 10px;
@@ -37,40 +47,20 @@
     cursor: pointer;
 }
 
-.add-food-content > input {
-    padding: 5px 7px;
-    height: 30px;
-}
-
-.add-food-content > label {
+.edit-comment-content label {
     font-size: 14px;
     margin-right: 10px;
     margin-top: 7px;
 }
 
-.add-food-content > textarea {
-    padding: 5px;
+.edit-comment-content textarea {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 10px;
     resize: none;
 }
 
-/* Spacing */
-
-#f-name {
-    margin-right: 45px;
-}
-
-#f-category {
-    margin-right: 23px;
-}
-
-#f-description {
-    margin-top: 50px;
-}
-
-#f-price {
-    margin-right: 49px;
-}
-
-#f-quantity {
-    margin-right: 28px;
+.edit-comment-content textarea::placeholder {
+    font-size: 14px;
 }

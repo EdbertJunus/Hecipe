@@ -5,7 +5,7 @@
 
     // Get Values
     String food_id = request.getParameter("FoodId");
-    Connect con = new Connect();
+    Connect con = Connect.getConnection();
     
     String query_delete = String.format("DELETE FROM msfood WHERE FoodId = ('%s')", food_id);
     con.executeUpdate(query_delete);

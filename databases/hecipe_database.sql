@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2022 at 07:30 PM
+-- Generation Time: Jun 13, 2022 at 08:08 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -42,10 +42,19 @@ CREATE TABLE `mscart` (
 --
 
 CREATE TABLE `mscomment` (
+  `CommentId` int(11) NOT NULL,
   `Food_Id` int(11) NOT NULL,
   `User_Id` int(11) NOT NULL,
   `UserComment` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mscomment`
+--
+
+INSERT INTO `mscomment` (`CommentId`, `Food_Id`, `User_Id`, `UserComment`) VALUES
+(1, 4, 2, 'Nasi babi yang sangat enak'),
+(2, 4, 3, 'Ini rasa nasi babi terenak');
 
 -- --------------------------------------------------------
 
@@ -75,7 +84,16 @@ INSERT INTO `msfood` (`FoodId`, `FoodName`, `FoodCategory`, `FoodDescription`, `
 (8, 'Mie Kuah', 'Meats', 'Ini adalah mie pakai kuah', 'assets/Nasi-Goreng.jpg', 10000, 15),
 (9, 'Mie Apa Pula', 'Meats', 'Ini mie apa pula lah', 'assets/Nasi-Goreng.jpg', 15000, 15),
 (10, 'Nasi Goreng Kambing', 'Vegetarian', 'Ini adalah nasi goreng pakai kambing', 'assets/Nasi-Goreng.jpg', 100000, 10),
-(11, 'Nasi Goreng', 'Meats', 'Nasi goreng biasa doang ni mah', 'assets/Nasi-Goreng.jpg', 15000, 100);
+(11, 'Nasi Goreng', 'Meats', 'Nasi goreng biasa doang ni mah', 'assets/Nasi-Goreng.jpg', 15000, 100),
+(12, 'Ayam Goreng', 'Meats', 'Ini adalah ayam goreng pakai minyak', 'assets/Nasi-Goreng.jpg', 15000, 100),
+(13, 'Ayam Panggang', 'Meats', 'Ini ayam yang sudah dipanggang', 'assets/Nasi-Goreng.jpg', 12500, 30),
+(14, 'Ayam Bakar', 'Meats', 'Ini adalah ayam yang dibakar', 'assets/Nasi-Goreng.jpg', 13000, 15),
+(15, 'Ayam Geprek', 'Meats', 'Ini adalah ayam yang dipukulin', 'assets/Nasi-Goreng.jpg', 18000, 20),
+(16, 'Soup Ayam', 'Meats', 'Ini adalah ayam yang dibuat soup', 'assets/Nasi-Goreng.jpg', 20000, 50),
+(17, 'Ayam Kampus', 'Meats', 'Ini adalah ayam yang dibeli di kampus', 'assets/Nasi-Goreng.jpg', 25000, 100),
+(18, 'Sapi Lada Hitam', 'Meats', 'Ini adalah sapi yang dibuat hitam', 'assets/Nasi-Goreng.jpg', 40000, 30),
+(19, 'Kangkung Cah Bawang', 'Vegetarian', 'Ini adalah kangkung yang di cah pakai bawang', 'assets/Nasi-Goreng.jpg', 10000, 80),
+(20, 'Kangkung Asam Manis', 'Vegetarian', 'Ini adalah kangkung dibuat asam tapi manis', 'assets/Nasi-Goreng.jpg', 12000, 80);
 
 -- --------------------------------------------------------
 
@@ -109,8 +127,9 @@ CREATE TABLE `msuser` (
 --
 
 INSERT INTO `msuser` (`UserId`, `UserName`, `UserEmail`, `UserPassword`, `UserRole`, `UserStatus`) VALUES
-(1, 'Nael', 'naelj15@gmail.com', 'asdasd123', 'Admin', 'logged_in'),
-(2, 'edbert', 'edbert@gmail.com', 'qweqwe123', 'Member', 'not_loggedin');
+(1, 'Nael', 'naelj15@gmail.com', 'asdasd123', 'Admin', 'not_loggedin'),
+(2, 'edbert', 'edbert@gmail.com', 'qweqwe123', 'Member', 'not_loggedin'),
+(3, 'Kevin', 'kevintan@gmail.com', 'zxczxc123', 'Member', 'not_loggedin');
 
 --
 -- Indexes for dumped tables
@@ -128,6 +147,7 @@ ALTER TABLE `mscart`
 -- Indexes for table `mscomment`
 --
 ALTER TABLE `mscomment`
+  ADD PRIMARY KEY (`CommentId`),
   ADD KEY `User_Id` (`User_Id`),
   ADD KEY `Food_Id` (`Food_Id`);
 
@@ -154,10 +174,16 @@ ALTER TABLE `msuser`
 --
 
 --
+-- AUTO_INCREMENT for table `mscomment`
+--
+ALTER TABLE `mscomment`
+  MODIFY `CommentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `msfood`
 --
 ALTER TABLE `msfood`
-  MODIFY `FoodId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `FoodId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `mstransaction`
@@ -169,7 +195,7 @@ ALTER TABLE `mstransaction`
 -- AUTO_INCREMENT for table `msuser`
 --
 ALTER TABLE `msuser`
-  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

@@ -15,7 +15,7 @@
     <%
         String foodId = request.getParameter("FoodId");
     %>
-    <form action="controller/editfood-validation.jsp?FoodId=<%= foodId%>" method="post" name="addFoodForm">
+    <form action="controller/editfood-validation.jsp?FoodId=<%= foodId%>" method="post" name="editFoodForm">
         <div class="add-food-container">
 
             <!-- Food Name -->
