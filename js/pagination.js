@@ -84,7 +84,7 @@ function pagination(numOfPages, showedPages){
 
     if(showedPages < numOfPages - 2 && numOfPages > 6){
         pageList += `<li class="page-dots">...</li>`;
-        pageList += `<li class="page-number" onclick="pagination(numOfPages, ${totalPages})"><span>${totalPages}</span></li>`;
+        pageList += `<li class="page-number" onclick="pagination(numOfPages, ${numOfPages})"><span>${numOfPages}</span></li>`;
     }
 
     if(showedPages < numOfPages){
