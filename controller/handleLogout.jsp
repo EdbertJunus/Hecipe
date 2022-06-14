@@ -25,5 +25,7 @@
     session.removeAttribute("userName");
     session.removeAttribute("userEmail");   
     session.removeAttribute("userId");
+    session.removeAttribute("foodQuantityList");
+    session.removeAttribute("foodIdList");
     response.sendRedirect("../index.jsp");
 %>
