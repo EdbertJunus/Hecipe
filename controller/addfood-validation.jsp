@@ -60,7 +60,7 @@
     }
     else{
         // Insert to food database
-        String query_insert = String.format("INSERT INTO msfood (FoodName, FoodCategory, FoodDescription, FoodImage, FoodPrice, FoodQuantity) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')", food_name, food_category, food_description, "assets/Nasi-Goreng.jpg", food_price, food_quantity);
+        String query_insert = String.format("INSERT INTO msfood (FoodName, FoodCategory, FoodDescription, FoodImage, FoodPrice, FoodQuantity) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')", food_name, food_category, food_description, "assets/dummy-image.jpg", food_price, food_quantity);
         con.executeUpdate(query_insert);
         response.sendRedirect("../foodPage.jsp");
     }

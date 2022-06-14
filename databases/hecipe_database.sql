@@ -53,8 +53,8 @@ CREATE TABLE `mscomment` (
 --
 
 INSERT INTO `mscomment` (`CommentId`, `Food_Id`, `User_Id`, `UserComment`) VALUES
-(1, 4, 2, 'Nasi babi yang sangat enak'),
-(2, 4, 3, 'Ini rasa nasi babi terenak');
+(1, 4, 2, 'Nasi rendang yang sangat enak'),
+(2, 4, 3, 'Ini rasa nasi rendang terenak');
 
 -- --------------------------------------------------------
 
@@ -77,23 +77,15 @@ CREATE TABLE `msfood` (
 --
 
 INSERT INTO `msfood` (`FoodId`, `FoodName`, `FoodCategory`, `FoodDescription`, `FoodImage`, `FoodPrice`, `FoodQuantity`) VALUES
-(4, 'Nasi Babi', 'Meats', 'Ini adalah nasi dikasih babi', 'assets/Nasi-Goreng.jpg', 30000, 20),
-(5, 'Nasi merah', 'Meats', 'Ini adalah nasi berwarna merah', 'assets/Nasi-Goreng.jpg', 15000, 40),
-(6, 'Nasi Rendang', 'Meats', 'Ini adalah nasi pakai rendang', 'assets/Nasi-Goreng.jpg', 30000, 10),
-(7, 'Mie Goreng', 'Meats', 'Ini adalah mie goreng indonesia', 'assets/Nasi-Goreng.jpg', 10000, 10),
-(8, 'Mie Kuah', 'Meats', 'Ini adalah mie pakai kuah', 'assets/Nasi-Goreng.jpg', 10000, 15),
-(9, 'Mie Apa Pula', 'Meats', 'Ini mie apa pula lah', 'assets/Nasi-Goreng.jpg', 15000, 15),
-(10, 'Nasi Goreng Kambing', 'Vegetarian', 'Ini adalah nasi goreng pakai kambing', 'assets/Nasi-Goreng.jpg', 100000, 10),
-(11, 'Nasi Goreng', 'Meats', 'Nasi goreng biasa doang ni mah', 'assets/Nasi-Goreng.jpg', 15000, 100),
-(12, 'Ayam Goreng', 'Meats', 'Ini adalah ayam goreng pakai minyak', 'assets/Nasi-Goreng.jpg', 15000, 100),
-(13, 'Ayam Panggang', 'Meats', 'Ini ayam yang sudah dipanggang', 'assets/Nasi-Goreng.jpg', 12500, 30),
-(14, 'Ayam Bakar', 'Meats', 'Ini adalah ayam yang dibakar', 'assets/Nasi-Goreng.jpg', 13000, 15),
-(15, 'Ayam Geprek', 'Meats', 'Ini adalah ayam yang dipukulin', 'assets/Nasi-Goreng.jpg', 18000, 20),
-(16, 'Soup Ayam', 'Meats', 'Ini adalah ayam yang dibuat soup', 'assets/Nasi-Goreng.jpg', 20000, 50),
-(17, 'Ayam Kampus', 'Meats', 'Ini adalah ayam yang dibeli di kampus', 'assets/Nasi-Goreng.jpg', 25000, 100),
-(18, 'Sapi Lada Hitam', 'Meats', 'Ini adalah sapi yang dibuat hitam', 'assets/Nasi-Goreng.jpg', 40000, 30),
-(19, 'Kangkung Cah Bawang', 'Vegetarian', 'Ini adalah kangkung yang di cah pakai bawang', 'assets/Nasi-Goreng.jpg', 10000, 80),
-(20, 'Kangkung Asam Manis', 'Vegetarian', 'Ini adalah kangkung dibuat asam tapi manis', 'assets/Nasi-Goreng.jpg', 12000, 80);
+(4, 'Nasi Rendang', 'Meats', 'Ini adalah nasi pakai rendang', 'assets/nasi-rendang.jpg', 30000, 10),
+(5, 'Mie Goreng', 'Meats', 'Ini adalah mie goreng indonesia', 'assets/mie-goreng.jpg', 10000, 10),
+(6, 'Mie Kuah', 'Meats', 'Ini adalah mie pakai kuah', 'assets/mie-kuah.jpg', 10000, 15),
+(7, 'Nasi Goreng', 'Meats', 'Nasi goreng biasa doang ni mah', 'assets/Nasi-Goreng.jpg', 15000, 100),
+(8, 'Ayam Goreng', 'Meats', 'Ini adalah ayam goreng pakai minyak', 'assets/ayam-goreng.jpeg', 15000, 100),
+(9, 'Ayam Panggang', 'Meats', 'Ini ayam yang sudah dipanggang', 'assets/ayam-panggang.jpeg', 12500, 30),
+(10, 'Ayam Geprek', 'Meats', 'Ini adalah ayam yang dipukulin', 'assets/ayam-geprek.jpg', 18000, 20),
+(11, 'Soup Ayam', 'Meats', 'Ini adalah ayam yang dibuat soup', 'assets/sup-ayam.jpg', 20000, 50),
+(12, 'Kangkung Cah Bawang', 'Vegetarian', 'Ini adalah kangkung yang di cah pakai bawang', 'assets/kankung-bawang.jpg', 10000, 80);
 
 -- --------------------------------------------------------
 
