@@ -36,7 +36,7 @@
               <td class="image-item">
                 <img src="<%= rs.getString("FoodImage")%>" alt="fried-rice" />
               </td>
-              <td><a href="#LinkeMenu"><%= rs.getString("FoodName")%></a></td>
+              <td><a href="food-detail.jsp?Food_Id=<%= rs.getInt("FoodId")%>"><%= rs.getString("FoodName")%></a></td>
               <input type="hidden" name="foodId" value="<%= rs.getString("FoodId")%>" />
               <td>
                 <form action="controller/handleCart.jsp?type=save" method="POST">

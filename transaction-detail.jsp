@@ -43,7 +43,7 @@
               <td class="image-item">
                 <img src="<%= rs.getString("FoodImage")%>" alt="*food-name*" />
               </td>
-              <td><a href="#LinkeMenu"><%= rs.getString("FoodName")%></a></td>
+              <td><a href="food-detail.jsp?Food_Id=<%= rs.getInt("FoodId")%>"><%= rs.getString("FoodName")%></a></td>
               <td><%= cartQuantityList.get(i)%></td>
               <td><%= rs.getString("FoodPrice")%></td>
               <td><%= cartTotalList.get(i)%></td>
