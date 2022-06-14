@@ -10,7 +10,7 @@
       so without holding yourself back, why not see what we have to over by
       clicking this button?
     </p>
-    <button type="button" class="btn-prime">See our's catalog</button>
+    <a class="btn-prime" href="foodPage.jsp">See our's catalog</a>
   </div>
   <div class="feature-content">
     <div class="purchase-food feature-item">
@@ -23,7 +23,7 @@
         variety of cuisine around the world. And so, now is the time if you want
         to fill your belly with the greatest cuisine from around the world.
       </p>
-      <button class="btn-prime">See what's we have to offer</button>
+      <a class="btn-prime" href="foodPage.jsp">See what's we have to offer</a>
     </div>
     <div class="search-foods feature-item">
       <span class="feature-title">
@@ -36,18 +36,20 @@
         around the world.
       </p>
       <div class="search-engine">
-        <input
-          type="search"
-          name="search-foods"
-          id="searchFoods"
-          placeholder="Search food by"
-        />
-        <select name="search-by" id="search-by">
-          <option value="name">Name</option>
-          <option value="category">Category</option>
-          <option value="description">Description</option>
-        </select>
-        <input type="submit" value="Search" class="btn-prime" />
+        <form action="foodPage.jsp">                
+          <input
+            type="text"
+            name="searchFood"
+            id="searchFoods"
+            placeholder="Search food by"
+          />
+          <select name="search-category" id="search-by">
+            <option value="name">Name</option>
+            <option value="category">Category</option>
+            <option value="description">Description</option>
+          </select>
+          <input type="submit" class="btn-prime" value="Search">
+        </form>
       </div>
     </div>
     <div class="site-status feature-item">
@@ -59,7 +61,7 @@
         <p class="description-text">Current Date:</p>
         <p class="description-text">
           <%
-            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             Date today = new Date();
             out.println(formatter.format(today));
           %>

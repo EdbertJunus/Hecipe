@@ -143,6 +143,7 @@ footer {
   border-style: none;
   box-shadow: 0 0 4px gray;
   font-weight: 600;
+  font-size: 14px;
 }
 
 .btn-prime:hover {
@@ -156,6 +157,8 @@ footer {
 
 .welcome-content > .btn-prime {
   margin-top: 10px;
+  display: inline-block;
+  text-decoration: none;
 }
 
 .feature-content {
@@ -204,6 +207,7 @@ footer {
 
 .site-status-item > .description-text:first-child {
   font-weight: 600;
+  margin-right: 2px;
 }
 
 .purchase-food > .btn-prime,
@@ -211,12 +215,17 @@ footer {
   margin-top: 16px;
 }
 
-.search-engine {
+.purchase-food > .btn-prime {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.search-engine > form {
   display: flex;
   flex-direction: row;
 }
 
-.search-engine > input[type="search"] {
+.search-engine > form > input[type="search"] {
   border: 1px solid #a0a7b2;
   border-right: none;
   border-top-left-radius: 4px;
@@ -224,13 +233,13 @@ footer {
   padding-left: 10px;
 }
 
-.search-engine > select {
+.search-engine > form > select {
   border: 1px solid #a0a7b2;
   border-right: none;
   color: #757575;
 }
 
-.search-engine > input[type="submit"] {
+.search-engine > form > input[type="submit"] {
   box-shadow: none;
   border-radius: 0;
   border: 1px solid #dc2626;
@@ -305,8 +314,8 @@ footer {
   }
   .feature-item,
   .search-engine,
-  .search-engine > input,
-  .search-engine > select {
+  .search-engine > form .search-engine > form > input,
+  .search-engine > form > select {
     width: 100%;
   }
   .feature-item {
