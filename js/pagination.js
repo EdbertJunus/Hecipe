@@ -8,7 +8,7 @@ function pagination(numOfPages, showedPages){
     var prevPage = showedPages - 1;
     var nextPage = showedPages + 1;
     var currActive;
-    // fix bug when pages is more than 5
+    
     if(showedPages > 1) {
         pageList += `<li class="first" onclick="pagination(numOfPages, 1)"><span>First</span></li>`;
         pageList += `<li class="prev" onclick="pagination(numOfPages, ${showedPages - 1})"><span>Prev</span></li>`;
@@ -84,7 +84,7 @@ function pagination(numOfPages, showedPages){
 
     if(showedPages < numOfPages - 2 && numOfPages > 6){
         pageList += `<li class="page-dots">...</li>`;
-        pageList += `<li class="page-number" onclick="pagination(numOfPages, ${totalPages})"><span>${totalPages}</span></li>`;
+        pageList += `<li class="page-number" onclick="pagination(numOfPages, ${numOfPages})"><span>${numOfPages}</span></li>`;
     }
 
     if(showedPages < numOfPages){
