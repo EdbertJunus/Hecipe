@@ -10,28 +10,36 @@
     <hr />
   </span>
   <div class="table-wrapper">
+    <%
+      String query = "";
+      if(userRole.equals("Admin")){
+        query = "SELECT COUNT(*) FROM mstransaction";
+      }else if(userRole.equals("Member")){
+        query = String.format("SELECT COUNT(*) FROM mstransaction T JOIN mscart C ON T.TransactionId = C.TransactionId WHERE UserId = %d GROUP BY C.TransactionId;", userId);
+      }
+      
+      ResultSet rs = con.executeQuery(query);
+      int countRow = 0;
+      if(rs.next()){
+        countRow = rs.getInt(1);
+      }      
+      if(countRow > 0){
+    %>
+
     <table class="transaction-table">
       <tr>
         <th>Date</th>
         <th>Processed</th>
-        <%-- <%
-          if(userRole != null && userRole.equals("Admin")){
-        %>
-          <th>Member</th>
-        <%
-          }
-        %> --%>
         <th>Action</th>
       </tr>
       <%
-        String query = "";
 
         if(userRole.equals("Admin")){
           query = "SELECT * FROM mstransaction";
         }else if(userRole.equals("Member")){
           query = String.format("SELECT * FROM mstransaction T JOIN mscart C ON T.TransactionId = C.TransactionId WHERE UserId = %d GROUP BY C.TransactionId;", userId);
         }
-        ResultSet rs = con.executeQuery(query);
+        rs = con.executeQuery(query);
         while(rs.next()){
           %>
             <tr class="table-item">
@@ -42,8 +50,17 @@
           <%
         }
       %>
-      <!--Diganti dengan jsp include-->
     </table>
+    <%
+      }else{
+        %>
+          <div class="empty-transaction-info">
+            <h2>There is no item in transaction currently</h2>
+            <a href="foodPage.jsp" class="btn-prime btn-success">Create Transaction Now</a>
+          </div>
+        <%
+      }
+    %>
   </div>
 </section>
 <%@ include file="html/footer.html" %>

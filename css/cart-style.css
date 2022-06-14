@@ -57,14 +57,16 @@
   text-decoration: none;
 }
 
-.empty-cart-info {
+.empty-cart-info,
+.empty-transaction-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.empty-cart-info > .btn-prime {
+.empty-cart-info > .btn-prime,
+.empty-transaction-info > .btn-prime {
   text-decoration: none;
 }
 
