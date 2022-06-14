@@ -41,7 +41,7 @@
               <td>
                 <form action="controller/handleCart.jsp?type=save" method="POST">
                 <div class="quantity-input">
-                  <input type="number" name="foodQuantity" value="<%= foodQuantityList.get(i)%>" min="1" max="<%= rs.getInt("FoodQuantity")%>"/>
+                  <input type="number" name="foodQuantity" value="<%= foodQuantityList.get(i)%>" min="0" max="<%= rs.getInt("FoodQuantity")%>"/>
                   <input type="hidden"
                   name="foodId" value="<%= rs.getString("FoodId")%>"/>
                   <input

@@ -38,13 +38,13 @@
 
     int foodIndex = foodIdList.indexOf(foodId);
     
-    if(foodQuantityList.get(foodIndex)+1 > curr_quantity){
-        response.sendRedirect("../foodPage.jsp?err="+curr_foodName+" stock is left "+curr_quantity);
-        return;
-    }
+    
     if(foodIndex > -1){
         foodQuantityList.set(foodIndex, foodQuantityList.get(foodIndex)+1);
         session.setAttribute("foodQuantityList", foodQuantityList);
+    }else if(foodIndex > -1 && foodQuantityList.get(foodIndex)+1 > curr_quantity){
+        response.sendRedirect("../foodPage.jsp?err="+curr_foodName+" stock is left "+curr_quantity);
+        return;
     }else{
         foodIdList.add(foodId);
         foodQuantityList.add(1);

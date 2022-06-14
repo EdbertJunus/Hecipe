@@ -21,18 +21,36 @@
         case "save":
             String query = String.format("SELECT * FROM msfood WHERE FoodId='%s'", foodId);
             rs = con.executeQuery(query);
-            
-            int current_quantity = 0;
-            while(rs.next()){
-                current_quantity = rs.getInt("FoodQuantity");
-            }
 
-            if(current_quantity < Integer.parseInt(foodQuantity)){
-                response.sendRedirect("../cart.jsp?error=Food Quantity exceed current stock, current stock left: " + current_quantity);
+            if(foodIdList.size() == 1 && Integer.parseInt(foodQuantity) == 0){
+                session.removeAttribute("foodQuantityList");
+                session.removeAttribute("foodIdList");
+                response.sendRedirect("../cart.jsp");
                 return;
+            }else{
+                if(Integer.parseInt(foodQuantity) == 0){
+                    foodQuantityList.remove(index);
+                    foodIdList.remove(index);
+                    session.setAttribute("foodQuantityList", foodQuantityList);
+                    session.setAttribute("foodIdList", foodIdList);
+                    response.sendRedirect("../cart.jsp");
+                    return;
+                }
+
+                int current_quantity = 0;
+                while(rs.next()){
+                    current_quantity = rs.getInt("FoodQuantity");
+                }
+
+                if(current_quantity < Integer.parseInt(foodQuantity)){
+                    response.sendRedirect("../cart.jsp?error=Food Quantity exceed current stock, current stock left: " + current_quantity);
+                    return;
+                }
+                foodQuantityList.set(index, Integer.parseInt(foodQuantity));
+                session.setAttribute("foodQuantityList", foodQuantityList);
             }
-            foodQuantityList.set(index, Integer.parseInt(foodQuantity));
-            session.setAttribute("foodQuantityList", foodQuantityList);
+            
+            
             break;
         case "delete":
             
