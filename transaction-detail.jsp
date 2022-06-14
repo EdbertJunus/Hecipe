@@ -41,9 +41,9 @@
           %>
             <tr class="table-item">
               <td class="image-item">
-                <img src="assets/<%= rs.getString("FoodImage")%>" alt="*food-name*" />
+                <img src="<%= rs.getString("FoodImage")%>" alt="*food-name*" />
               </td>
-              <td><a href="#LinkeMenu"><%= rs.getString("FoodDescription")%></a></td>
+              <td><a href="#LinkeMenu"><%= rs.getString("FoodName")%></a></td>
               <td><%= cartQuantityList.get(i)%></td>
               <td><%= rs.getString("FoodPrice")%></td>
               <td><%= cartTotalList.get(i)%></td>
