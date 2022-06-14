@@ -45,7 +45,7 @@
               </td>
               <td><a href="food-detail.jsp?Food_Id=<%= rs.getInt("FoodId")%>"><%= rs.getString("FoodName")%></a></td>
               <td><%= cartQuantityList.get(i)%></td>
-              <td><%= rs.getString("FoodPrice")%></td>
+              <td><%= cartTotalList.get(i) / cartQuantityList.get(i)%></td>
               <td><%= cartTotalList.get(i)%></td>
             </tr>
           <%
