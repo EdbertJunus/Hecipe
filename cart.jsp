@@ -5,6 +5,11 @@
     <hr />
   </span>
   <div class="table-wrapper">
+    <%
+      ArrayList<String> foodIdList = (ArrayList<String>)session.getAttribute("foodIdList");
+        ArrayList<Integer> foodQuantityList = (ArrayList<Integer>)session.getAttribute("foodQuantityList");
+      if(foodIdList != null){
+    %>
     <table class="transaction-table">
       <tr>
         <th>Image</th>
@@ -14,76 +19,72 @@
         <th>Subtotal</th>
         <th>Action</th>
       </tr>
-      <tr class="table-item">
-        <td class="image-item">
-          <img src="assets/Nasi-Goreng.jpg" alt="fried-rice" />
-        </td>
-        <td><a href="#LinkeMenu">Fried Rice</a></td>
-        <input type="hidden" name="foodId" value="foodId" />
-        <td>
-          <div class="quantity-input">
-            <input type="number" value="2" />
-            <input
-              class="btn-prime btn-warning save-btn"
-              type="submit"
-              value="Save"
-            />
-          </div>
-        </td>
-        <td>1000</td>
-        <td class="item-subtotal">2000</td>
-        <td><button class="btn-prime">Delete</button></td>
-      </tr>
-      <tr class="table-item">
-        <td class="image-item">
-          <img src="assets/nasi-kuning.jpg" alt="kuning-rice" />
-        </td>
-        <td><a href="#LinkeMenu">Yellow Rice</a></td>
-        <td>
-          <div class="quantity-input">
-            <input type="number" value="2" />
-            <input
-              class="btn-prime btn-warning save-btn"
-              type="submit"
-              value="Save"
-            />
-          </div>
-        </td>
-        <td>1000</td>
-        <td class="item-subtotal">2000</td>
-        <td><button class="btn-prime">Delete</button></td>
-      </tr>
-      <tr class="table-item">
-        <td class="image-item">
-          <img src="assets/nasi-kuning.jpg" alt="kuning-rice" />
-        </td>
-        <td><a href="#LinkeMenu">Yellow Rice</a></td>
-        <td>
-          <div class="quantity-input">
-            <input type="number" value="1" />
-            <input
-              class="btn-prime btn-warning save-btn"
-              type="submit"
-              value="Save"
-            />
-          </div>
-        </td>
-        <td>1000</td>
-        <td class="item-subtotal">2000</td>
-        <td><button class="btn-prime">Delete</button></td>
-      </tr>
+      <%
+        
+        String query = "";
+        ResultSet rs;
+        int total = 0;
+        
+          for(int i=0; i<foodIdList.size(); i++){
+            query = String.format("SELECT * FROM msfood WHERE FoodId='%s'", foodIdList.get(i));
+            rs = con.executeQuery(query);
+            
+            while(rs.next()){
+              total += (foodQuantityList.get(i) * rs.getInt("FoodPrice"));
+        %>
+            <tr class="table-item">
+              <td class="image-item">
+                <img src="<%= rs.getString("FoodImage")%>" alt="fried-rice" />
+              </td>
+              <td><a href="#LinkeMenu"><%= rs.getString("FoodName")%></a></td>
+              <input type="hidden" name="foodId" value="<%= rs.getString("FoodId")%>" />
+              <td>
+                <form action="controller/handleCart.jsp?type=save" method="POST">
+                <div class="quantity-input">
+                  <input type="number" name="foodQuantity" value="<%= foodQuantityList.get(i)%>" min="1" max="<%= rs.getInt("FoodQuantity")%>"/>
+                  <input type="hidden"
+                  name="foodId" value="<%= rs.getString("FoodId")%>"/>
+                  <input
+                    class="btn-prime btn-warning save-btn"
+                    type="submit"
+                    value="Save"
+                  />
+                </div>
+                </form>
+              </td>
+              <td><%= rs.getString("FoodPrice")%></td>
+              <td class="item-subtotal"><%= foodQuantityList.get(i) * rs.getInt("FoodPrice")%></td>
+              <td>
+                <button class="btn-prime delete-btn"><a  href="controller/handleCart.jsp?type=delete&foodId=<%= rs.getString("FoodId")%>">Delete</a></button>
+              </td>
+            </tr>
+        <%
+            }
+          }
+        
+      %>
       <!--Diganti dengan jsp include-->
     </table>
     <div class="total-price">
       <span>
         <b>Total:</b>
-        <p id="total-price-text">*3200*</p>
+        <p id="total-price-text"><%= total%></p>
       </span>
       <div class="btn-wrapper">
-        <button type="button" class="btn-prime">Empty cart</button>
-        <button type="button" class="btn-prime btn-success">Check out</button>
+        <button type="button" class="btn-prime delete-btn"><a href="controller/handleCart.jsp?type=empty">Empty cart</a></button>
+        <button type="button" class="btn-prime btn-success checkout-btn"><a href="controller/handleCart.jsp?type=checkout">Check out</a></button>
       </div>
     </div>
+    <%
+      }else{
+    %>
+    <div class="empty-cart-info">
+      <h2>There is no item in cart currently</h2>
+       <a href="foodPage.jsp" class="btn-prime btn-success">Add product to cart</a>
+    </div>
+    <%
+      }
+    %>
   </div>
 </section>
 <%@ include file="html/footer.html" %>

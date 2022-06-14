@@ -13,7 +13,7 @@
 }
 
 .quantity-input input[type="number"],
-.quantity-input > input[type="submit"] {
+.quantity-input > .save-btn {
   width: 50px;
   border: 0.5px solid #e9e9ed;
 }
@@ -42,6 +42,30 @@
 
 #total-price-text {
   margin-left: 6px;
+}
+
+.quantity-input > .save-btn {
+  text-decoration: none;
+  color: white;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+.delete-btn > a,
+.checkout-btn > a {
+  color: white;
+  text-decoration: none;
+}
+
+.empty-cart-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty-cart-info > .btn-prime {
+  text-decoration: none;
 }
 
 @media screen and (max-width: 500px) {

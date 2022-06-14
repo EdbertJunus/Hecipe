@@ -19,6 +19,7 @@
                 Class.forName("com.mysql.jdbc.Driver");
                 con = DriverManager.getConnection(connection, username, password);
                 st = con.createStatement();
+                
             }catch(Exception e){
                 e.printStackTrace();
             }
@@ -46,7 +47,7 @@
         // Insert Delete Update
         public Statement executeUpdate(String query){
             try{
-                st.executeUpdate(query);
+                st.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
             }catch(Exception e){
                 e.printStackTrace();
             }
