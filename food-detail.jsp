@@ -20,7 +20,7 @@
     <div class="fd-content">
         <!-- Data dummy, nanti dari db-->
         <div class="fd-content-left">
-            <img src="assets/nasi-kuning.jpg" alt="Nasi Goreng">
+            <img src="<%= rs.getString("FoodImage")%>" alt="Nasi Goreng">
             <div class="fd-description">
                 <!-- Category -->
                 <h4>Category</h4>
@@ -141,7 +141,9 @@
             </div>
             <%
         }
+        if(userRole != null && userRole.equals("Member")){
     %>
+    
     <div class="post-comment">
         <form action="controller/addComment-Controller.jsp" class="comment-form">
             <textarea name="userComment" id="" cols="30" rows="7" placeholder="Write your comment"></textarea>
@@ -150,6 +152,7 @@
         </form>
     </div>
     <%
+        }
         if (request.getParameter("err") != null){
             out.println("<br><span style='color:red; font-size: 15px;'>" + request.getParameter("err") + "</span>");
         }
