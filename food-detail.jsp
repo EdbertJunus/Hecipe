@@ -44,7 +44,7 @@
                 if(userRole != null){
                     if(userRole.equals("Member")){
                         %>
-                        <button><a href="">Add to Cart</a></button>
+                        <button><a href="controller/addFoodToCart.jsp?foodId=<%= rs.getInt("FoodId")%>">Add to Cart</a></button>
                         <%
                     }
                 }
